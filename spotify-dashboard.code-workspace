@@ -1,0 +1,85 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "Spotify Data Analysis"
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.rulers": [88],
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.python",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      }
+    },
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/.DS_Store": true
+    },
+    "python.terminal.executeInFileDir": true,
+    "python.analysis.typeCheckingMode": "basic"
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Run Analysis",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/spotify_analysis.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+      },
+      {
+        "name": "Python: Run Visualizations",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/spotify_visualizations.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Install Dependencies",
+        "type": "shell",
+        "command": "${workspaceFolder}/venv/bin/pip",
+        "args": ["install", "-r", "requirements.txt"],
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Run Analysis",
+        "type": "shell",
+        "command": "${workspaceFolder}/venv/bin/python",
+        "args": ["spotify_analysis.py"],
+        "problemMatcher": [],
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Run Visualizations",
+        "type": "shell",
+        "command": "${workspaceFolder}/venv/bin/python",
+        "args": ["spotify_visualizations.py"],
+        "problemMatcher": []
+      }
+    ]
+  }
+}
