@@ -81,7 +81,7 @@ class SpotifyAnalyzer:
         print("="*60)
         
         # Parse release_date
-        self.df['release_year'] = pd.to_datetime(self.df['release_date']).dt.year
+        self.df['release_year'] = pd.to_datetime(self.df['release_date'], format='mixed', errors='coerce').dt.year
         
         # Tracks released per year
         yearly_counts = self.df['release_year'].value_counts().sort_index()
